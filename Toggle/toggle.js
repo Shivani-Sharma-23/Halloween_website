@@ -18,11 +18,11 @@ function load() {
 }
 
 function updateIcon() {
-    const lightModeImage = document.querySelector('.light-mode-image');
-    const darkModeImage = document.querySelector('.dark-mode-image');
+    const lightModeImage = document.querySelector('.treat-mode-image');
+    const darkModeImage = document.querySelector('.trick-mode-image');
 
-    lightModeImage.src = body.classList.contains('darkmode') ? 'path-to-dark-image.png' : 'path-to-light-image.png';
-    darkModeImage.src = body.classList.contains('darkmode') ? 'path-to-light-image.png' : 'path-to-dark-image.png';
+    lightModeImage.style.display = body.classList.contains('darkmode') ? 'none' : 'block';
+    darkModeImage.style.display = body.classList.contains('darkmode') ? 'block' : 'none';
 }
 
 load();
@@ -34,14 +34,13 @@ btn.addEventListener('click', (event) => {
 
     updateIcon();
 
-    // Determine sliding direction and redirect to different HTML pages
     const slidingDirection = event.clientX < btn.getBoundingClientRect().left ? 'left' : 'right';
 
-    if (slidingDirection === 'left') {
-        // Redirect to the left HTML page
-        window.location.href = 'left.html';
-    } else {
-        // Redirect to the right HTML page
-        window.location.href = 'right.html';
-    }
+    setTimeout(() => {
+        if (slidingDirection === 'left') {
+            window.location.href = 'left.html';
+        } else {
+            window.location.href = 'right.html';
+        }
+    }, 2000);
 });
