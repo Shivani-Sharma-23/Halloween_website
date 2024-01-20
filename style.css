@@ -46,11 +46,63 @@ nav a#start:hover {
     border: 2px solid #ff6600;
     color: #ff6600;
 }
+.landing-page {
+  position: relative;
+}
 .center-content {
+    margin-top: 2%;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2; 
 }
 .center-content img{
     max-width: 500px; 
+}
+.yo img{
+  max-width: 100px;
+}
+.ghost {
+  position: absolute;
+  top: -20px;
+  left: 30%;
+  transform: translateX(-50%);
+  z-index: 1; 
+  animation: ghostMotion 10s linear ;
+}
+.ghost img{
+  max-width: 100px;
+}
+.ghost2 {
+  position: absolute;
+  top: -20px;
+  right: 23%;
+  transform: translateX(-50%) scaleX(-1);
+  z-index: 1; 
+  animation: ghostMotion2 10s linear  ;
+}
+.ghost2 img{
+  max-width: 100px;
+} 
+@keyframes ghostMotion {
+  0% {
+      left: 5%;
+  }
+  50% {
+      left: 30%;
+  }
+  100% {
+      left: 30%;
+  }
+}
+@keyframes ghostMotion2 {
+  0% {
+      right: 1%;
+  }
+  50% {
+      right: 23%;
+  }
+  100% {
+      right: 23%;
+  }
 }
