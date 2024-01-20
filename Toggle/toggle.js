@@ -1,50 +1,47 @@
 const body = document.querySelector('body');
 const btn = document.querySelector('.btn');
-const icon = document.querySelector('.btn__icon');
 
-//to save the dark mode use the object "local storage".
-
-//function that stores the value true if the dark mode is activated or false if it's not.
-function store(value){
-  localStorage.setItem('darkmode', value);
+function store(value) {
+    localStorage.setItem('darkmode', value);
 }
 
-//function that indicates if the "darkmode" property exists. It loads the page as we had left it.
-function load(){
-  const darkmode = localStorage.getItem('darkmode');
+function load() {
+    const darkmode = localStorage.getItem('darkmode');
 
-  //if the dark mode was never activated
-  if(!darkmode){
-    store(false);
-    icon.classList.add('fa-sun');
-  } else if( darkmode == 'true'){ //if the dark mode is activated
-    body.classList.add('darkmode');
-    icon.classList.add('fa-moon');
-  } else if(darkmode == 'false'){ //if the dark mode exists but is disabled
-    icon.classList.add('fa-sun');
-  }
+    if (!darkmode) {
+        store(false);
+    } else if (darkmode === 'true') {
+        body.classList.add('darkmode');
+    }
+
+    updateIcon();
 }
 
+function updateIcon() {
+    const lightModeImage = document.querySelector('.light-mode-image');
+    const darkModeImage = document.querySelector('.dark-mode-image');
+
+    lightModeImage.src = body.classList.contains('darkmode') ? 'path-to-dark-image.png' : 'path-to-light-image.png';
+    darkModeImage.src = body.classList.contains('darkmode') ? 'path-to-light-image.png' : 'path-to-dark-image.png';
+}
 
 load();
 
-btn.addEventListener('click', () => {
+btn.addEventListener('click', (event) => {
+    body.classList.toggle('darkmode');
 
-  body.classList.toggle('darkmode');
-  icon.classList.add('animated');
+    store(body.classList.contains('darkmode'));
 
-  //save true or false
-  store(body.classList.contains('darkmode'));
+    updateIcon();
 
-  if(body.classList.contains('darkmode')){
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
-  }else{
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  }
+    // Determine sliding direction and redirect to different HTML pages
+    const slidingDirection = event.clientX < btn.getBoundingClientRect().left ? 'left' : 'right';
 
-  setTimeout( () => {
-    icon.classList.remove('animated');
-  }, 500)
-})
+    if (slidingDirection === 'left') {
+        // Redirect to the left HTML page
+        window.location.href = 'left.html';
+    } else {
+        // Redirect to the right HTML page
+        window.location.href = 'right.html';
+    }
+});
