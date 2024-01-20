@@ -18,6 +18,21 @@
         <div class="ghost2">
             <img src="images/ghost.png" alt="bhu">
         </div>
+        <div class="pumkin">
+            <img src="images/pumkin.png" alt="">
+        </div>
+        <div class="pumkin2">
+            <img src="images/pumkin.png" alt="">
+        </div>
+        <div class="pumkin3">
+            <img src="images/pumkin.png" alt="">
+        </div>
+        <div class="pumkin4">
+            <img src="images/pumkin.png" alt="">
+        </div>
+        <div class="pumkin5">
+            <img src="images/pumkin.png" alt="">
+        </div>
     </section>
 
     <section id="start" class="toggle-gift">
@@ -27,6 +42,22 @@
     </section>
     
     
-<script src="script.js"></script>
+    <script>
+        document.addEventListener("mousemove", function (e) {
+            createGlitter(e.pageX, e.pageY);
+        });
+    
+        function createGlitter(x, y) {
+            const glitter = document.createElement("div");
+            glitter.className = "glitter";
+            glitter.style.left = x + "px";
+            glitter.style.top = y + "px";
+            document.body.appendChild(glitter);
+    
+            setTimeout(() => {
+                glitter.remove();
+            }, 1000);
+        }
+    </script>
 </body>
 </html>
