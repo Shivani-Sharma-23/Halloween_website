@@ -38,6 +38,7 @@ btn.addEventListener('click', (event) => {
 
     setTimeout(() => {
         if (slidingDirection === 'left') {
+
             window.location.href = 'left.html';
         } else {
             window.location.href = 'right.html';
