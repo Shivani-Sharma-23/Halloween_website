@@ -33,6 +33,7 @@
         <div class="pumkin5">
             <img src="images/pumkin.png" alt="">
         </div>
+        <div id="snowfall-container"></div>
     </section>
 
     <section id="start" class="toggle-gift">
@@ -57,6 +58,21 @@
             setTimeout(() => {
                 glitter.remove();
             }, 1000);
+        } 
+        document.addEventListener("DOMContentLoaded", function () {
+            createSnowflakes();
+        });
+
+        function createSnowflakes() {
+            const snowfallContainer = document.getElementById('snowfall-container');
+
+            for (let i = 0; i < 50; i++) { 
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.style.left = `${Math.random() * 100}vw`;
+                snowflake.style.animationDuration = `${Math.random() * 2 + 1}s`; 
+                snowfallContainer.appendChild(snowflake);
+            }
         }
 
         setTimeout(() => {
